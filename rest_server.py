@@ -6,10 +6,21 @@ import uvicorn
 app = FastAPI(title="Word Checker API", description="Workshop API for checking submitted words")
 
 # Sample word list - replace with your actual words
-CORRECT_WORDS = {
-    "python", "fastapi", "workshop", "programming", "coding",
-    "api", "endpoint", "server", "database", "framework"
-}
+CORRECT_WORDS = [
+    "Python", "coding", "programming", "variables", "functions", "loops",
+    "conditionals", "syntax", "debugging", "interpreter", "script", "module",
+    "package", "pip", "virtualenv", "IDE", "editor", "terminal", "print", "input",
+    "list", "dictionary", "tuple", "set", "string", "integer", "float", "boolean",
+    "if", "for", "while", "import", "def", "class", "object", "exception", "try",
+    "except", "data", "automation", "file", "open", "read", "write", "append",
+    "comment", "indentation", "error", "traceback", "args", "kwargs", "loop",
+    "range", "len", "type", "index", "slice", "pop", "append", "extend", "remove",
+    "sort", "reverse", "lambda", "map", "filter", "reduce", "comprehension",
+    "scope", "global", "local", "return", "None", "True", "False", "is", "in",
+    "not", "and", "or", "elif", "assert", "with", "as", "pass", "continue",
+    "break", "help", "dir", "zip", "enumerate", "built-in", "standard library"
+]
+
 
 # Pydantic models for request/response
 class WordSubmission(BaseModel):
