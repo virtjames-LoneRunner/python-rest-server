@@ -38,7 +38,6 @@ submissions: List[Dict] = []
 
 @app.get("/")
 async def root():
-    """Welcome endpoint"""
     return {"message": "Welcome to the Word Checker Workshop API!"}
 
 @app.post("/check-word", response_model=WordResponse)
@@ -72,23 +71,14 @@ async def check_word(submission: WordSubmission):
 
 @app.get("/words")
 async def get_word_list():
-    """
-    Get the list of correct words (for workshop organizers)
-    """
     return {"correct_words": sorted(list(CORRECT_WORDS))}
 
 @app.get("/submissions")
 async def get_submissions():
-    """
-    Get all submissions (for workshop organizers)
-    """
     return {"submissions": submissions, "total_count": len(submissions)}
 
 @app.get("/stats")
 async def get_stats():
-    """
-    Get workshop statistics
-    """
     total_submissions = len(submissions)
     correct_submissions = sum(1 for s in submissions if s["is_correct"])
 
@@ -101,9 +91,6 @@ async def get_stats():
 
 @app.post("/add-word")
 async def add_word(word: str):
-    """
-    Add a new word to the correct words list (for workshop organizers)
-    """
     word = word.lower().strip()
     if word in CORRECT_WORDS:
         return {"message": f"Word '{word}' already exists in the list"}
